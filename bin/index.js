@@ -6,7 +6,7 @@ const inquirer = require('inquirer');
 const logSymbols = require('log-symbols');
 const ora = require('ora');
 
-const spinner = ora(chalk.red('gitmeup ')+chalk.white('processing'));
+const spinner = ora(chalk.red('gitmeup '));
 
 const git = simpleGit();
 
@@ -39,18 +39,23 @@ inquirer
           //console.log(addSuccess);
           console.log('\n');
           spinner.start();
-          console.log('\n');
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
+          spinner.stop();
           git.commit(commit_message)
             .then(
                (success) => {
                 //console.log(successCommit);
+                  spinner.start();
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
+                  spinner.stop();
                   git.pull('origin',branch_name)
                      .then((success) => {
+                        spinner.start();
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
+                        spinner.stop();
                         git.push('origin',branch_name)
                            .then((success) => {
+                              spinner.start();
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
                               spinner.stop();
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan.underline('saurabh0719'))
