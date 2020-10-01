@@ -35,15 +35,15 @@ inquirer
     .then(
        (addSuccess) => {
           //console.log(addSuccess);
-          console.log(chalk.green('All files added successfully'))
+          console.log(chalk.green('\nAll files added successfully'))
           git.commit(commit_message)
             .then(
                (success) => {
                 //console.log(successCommit);
-                  console.log(chalk.green('Commit successful') + chalk.yellow(commit_message))
+                  console.log(chalk.magenta('Commit successful : ') + chalk.yellowBright(commit_message))
                   git.pull('origin',branch_name)
                      .then((success) => {
-                        console.log(chalk.blue('Pull successful'));
+                        console.log(chalk.cyan('Pull successful'));
                         git.push('origin',branch_name)
                            .then((success) => {
                               console.log(chalk.blue('Changes pushed successfully'));
