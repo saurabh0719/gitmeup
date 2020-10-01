@@ -44,7 +44,8 @@ inquirer
                         console.log(chalk.cyan('Pull successful'));
                         git.push('origin',branch_name)
                            .then((success) => {
-                              console.log(chalk.blue('Changes pushed successfully'));
+                              console.log(chalk.blue('Changes pushed successfully\n'));
+                              console.log(chalk.red('gitmeup')+chalk.white('\u20AA')+chalk.cyan.underline('saurabh0719'))
                               process.exit();
                            },(failed)=> {
                               console.log(chalk.red('Push failed'));
