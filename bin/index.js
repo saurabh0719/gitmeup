@@ -14,7 +14,7 @@ inquirer
     {
       name: 'branchname',
       message: 'Enter branch name (default : master) : ',
-      default: 'master',
+      default: 'main',
     },
     {
       name: 'commitMessage',
@@ -48,6 +48,14 @@ inquirer
      }, (failed) => {
         console.log(chalk.red('Commit failed'));
  });
+
+ git.pull('origin',branch_name)
+    .then((success) => {
+       console.log(chalk.blue('Pull successful'));
+    },(failed)=> {
+       console.log(chalk.red('Pull failed'));
+ });
+
 // Finally push to online repository
  git.push('origin',branch_name)
     .then((success) => {
