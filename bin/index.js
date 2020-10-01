@@ -23,11 +23,11 @@ inquirer
     },
   ])
   .then(answers => {
-    console.log('Answers:', answers);
+    //console.log('Answers:', answers);
     branch_name = answers.branchname;
     commit_message = answers.commitMessage;
-    console.log(branch_name);
-    console.log(commit_message);
+    //console.log(branch_name);
+    //console.log(commit_message);
 
     git.add('.')
     .then(
