@@ -4,9 +4,6 @@ const simpleGit = require('simple-git/promise');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const logSymbols = require('log-symbols');
-const ora = require('ora');
-
-const spinner = ora(chalk.red('gitmeup '));
 
 const git = simpleGit();
 
@@ -38,9 +35,7 @@ inquirer
        (addSuccess) => {
           //console.log(addSuccess);
           console.log('\n');
-          spinner.start();
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
-          spinner.stop();
           git.commit(commit_message)
             .then(
                (success) => {
