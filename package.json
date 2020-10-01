@@ -1,0 +1,28 @@
+{
+  "name": "gitmeup",
+  "version": "1.0.0",
+  "description": "ez git stuff",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saurabh0719/gitmeup.git"
+  },
+  "author": "saurabh0719",
+  "license": "ISC",
+  "bin": {
+    "gitmeup": "./bin/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/saurabh0719/gitmeup/issues"
+  },
+  "homepage": "https://github.com/saurabh0719/gitmeup#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "simple-git": "^2.20.1",
+    "yargs": "^16.0.3"
+  }
+}
