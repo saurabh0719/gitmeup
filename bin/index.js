@@ -6,7 +6,6 @@ const inquirer = require('inquirer');
 const logSymbols = require('log-symbols');
 
 const git = simpleGit();
-
 var branch_name;
 var commit_message;
 
