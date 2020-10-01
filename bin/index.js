@@ -3,6 +3,7 @@
 const simpleGit = require('simple-git/promise');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+const logSymbols = require('log-symbols');
 
 const git = simpleGit();
 
@@ -13,7 +14,7 @@ inquirer
   .prompt([
     {
       name: 'branchname',
-      message: 'Enter branch name (main) : ',
+      message: 'Enter branch name : ',
       default: 'main',
     },
     {
@@ -33,19 +34,19 @@ inquirer
     .then(
        (addSuccess) => {
           //console.log(addSuccess);
-          console.log(chalk.green('\nAll files added successfully'))
+          console.log(logSymbols.success, chalk.green('\nAll files added successfully'))
           git.commit(commit_message)
             .then(
                (success) => {
                 //console.log(successCommit);
-                  console.log(chalk.magenta('Commit successful : ') + chalk.yellowBright(commit_message))
+                  console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.yellowBright(commit_message))
                   git.pull('origin',branch_name)
                      .then((success) => {
-                        console.log(chalk.cyan('Pull successful'));
+                        console.log(logSymbols.success, chalk.cyan('Pull successful'));
                         git.push('origin',branch_name)
                            .then((success) => {
-                              console.log(chalk.blue('Changes pushed successfully\n'));
-                              console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA') + chalk.cyan.underline(' saurabh0719'))
+                              console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
+                              console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan.underline('saurabh0719'))
                               process.exit();
                            },(failed)=> {
                               console.log(chalk.red('Push failed'));
