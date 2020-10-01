@@ -34,12 +34,13 @@ inquirer
     .then(
        (addSuccess) => {
           //console.log(addSuccess);
-          console.log(logSymbols.success, chalk.green('\nAll files added successfully'))
+          console.log('\n');
+          console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
           git.commit(commit_message)
             .then(
                (success) => {
                 //console.log(successCommit);
-                  console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.yellowBright(commit_message))
+                  console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
                   git.pull('origin',branch_name)
                      .then((success) => {
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
