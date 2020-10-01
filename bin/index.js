@@ -13,7 +13,7 @@ inquirer
   .prompt([
     {
       name: 'branchname',
-      message: 'Enter branch name (default : master) : ',
+      message: 'Enter branch name (default : main) : ',
       default: 'main',
     },
     {
@@ -36,13 +36,42 @@ inquirer
        (addSuccess) => {
           //console.log(addSuccess);
           console.log(chalk.green('All files added successfully'))
+          git.commit(commit_message)
+            .then(
+               (success) => {
+                //console.log(successCommit);
+                  console.log(chalk.green('Commit successful') + chalk.yellow(commit_message))
+                  git.pull('origin',branch_name)
+                     .then((success) => {
+                        console.log(chalk.blue('Pull successful'));
+                        git.push('origin',branch_name)
+                           .then((success) => {
+                              console.log(chalk.blue('Changes pushed successfully'));
+                              process.exit();
+                           },(failed)=> {
+                              console.log(chalk.red('Push failed'));
+                           });
+                     },(failed)=> {
+                        console.log(chalk.red('Pull failed'));
+                  });
+               }, (failed) => {
+                  console.log(chalk.red('Commit failed'));
+         });
        }, (failedAdd) => {
           console.log(chalk.red('Adding files failed'));
     });
+
+
+
+
+
+
+/*
+
 // Commit files as Initial Commit
  git.commit(commit_message)
    .then(
-      (successCommit) => {
+      (success) => {
         //console.log(successCommit);
         console.log(chalk.green('Commit successful') + chalk.yellow(commit_message))
      }, (failed) => {
@@ -64,3 +93,6 @@ inquirer
        console.log(chalk.red('Push failed'));
  });
 
+ process.exit()
+
+*/

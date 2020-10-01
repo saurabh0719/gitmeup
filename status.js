@@ -1,8 +1,6 @@
 const simpleGit = require('simple-git/promise');
 
-simpleGit.status()
-    .then(
-       (StatusResult) => {
-          //console.log(addSuccess);
-          console.log(StatusResult);
-       });
+const git = simpleGit();
+
+// promise
+git.status().then(result => {console.log(result)});
