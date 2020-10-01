@@ -45,19 +45,13 @@ inquirer
             .then(
                (success) => {
                 //console.log(successCommit);
-                  spinner.start();
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
-                  spinner.stop();
                   git.pull('origin',branch_name)
                      .then((success) => {
-                        spinner.start();
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
-                        spinner.stop();
                         git.push('origin',branch_name)
                            .then((success) => {
-                              spinner.start();
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
-                              spinner.stop();
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan.underline('saurabh0719'))
                               process.exit();
                            },(failed)=> {
