@@ -1,7 +1,7 @@
 {
   "name": "gitmeup",
   "version": "1.0.0",
-  "description": "ez git stuff",
+  "description": "cli tool to automate repetitive git commands",
   "main": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/saurabh0719/gitmeup.git"
   },
+  "keywords": [
+    "git",
+    "git push",
+    "git commit",
+    "git commands",
+    "automate"
+  ],
   "author": "saurabh0719",
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "gitmeup": "./bin/index.js"
   },
