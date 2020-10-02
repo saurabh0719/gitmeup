@@ -1,6 +1,6 @@
 {
   "name": "gitmeup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cli tool to automate repetitive git commands",
   "main": "./bin/index.js",
   "scripts": {
