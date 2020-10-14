@@ -1,4 +1,4 @@
-# gitmeup @1.0.0
+# gitmeup @1.0.1
 
 cli tool to automate git commands. 
 
