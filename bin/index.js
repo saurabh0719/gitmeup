@@ -31,8 +31,8 @@ inquirer
 
     git.add('.')
     .then(
-       (addSuccess) => {
-          console.log(addSuccess);
+       (success) => {
+          console.log(success);
           console.log('\n');
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
           git.commit(commit_message)
