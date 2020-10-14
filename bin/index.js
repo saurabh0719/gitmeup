@@ -32,7 +32,7 @@ inquirer
     git.add('.')
     .then(
        (success) => {
-          console.log('\n');
+          console.log("");
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
           git.commit(commit_message)
             .then(
@@ -47,6 +47,7 @@ inquirer
                            .then((success) => {
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
                               console.log(success);
+                              console.log("");
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan('saurabh0719'))
                               process.exit();
                            },(failed)=> {
