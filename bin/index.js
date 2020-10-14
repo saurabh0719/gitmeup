@@ -32,22 +32,21 @@ inquirer
     git.add('.')
     .then(
        (success) => {
-          console.log(success);
           console.log('\n');
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
           git.commit(commit_message)
             .then(
                (success) => {
-                  console.log(success);
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
+                  console.log(success);
                   git.pull('origin',branch_name)
                      .then((success) => {
-                        console.log(success);
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
+                        console.log(success);
                         git.push('origin',branch_name)
                            .then((success) => {
-                              console.log(success);
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
+                              console.log(success);
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan('saurabh0719'))
                               process.exit();
                            },(failed)=> {
