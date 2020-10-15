@@ -79,7 +79,9 @@ require('yargs')
        (success) => {
           console.log("");
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
-          console.log("")
+          if(commit_log){ 
+            console.log(""); 
+         }
           git.commit(commit_message)
             .then(
                (success) => {
