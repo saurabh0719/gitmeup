@@ -2,7 +2,8 @@
 
 const simpleGit = require('simple-git/promise');
 const chalk = require('chalk');
-const inquirer = require('inquirer');
+const inquirer1 = require('inquirer');
+const inquirer2 = require('inquirer');
 const logSymbols = require('log-symbols');
 const JSONdb = require('simple-json-db');
 const db = new JSONdb('./settings.json');
@@ -18,9 +19,9 @@ let def_message = db.get('message');
 require('yargs')
   .scriptName("pirate-parser")
   .usage('$0 <cmd>')
-  .command('-d', 'Change defaults', (yargs) => {}, function (argv) {
+  .command('defaults', 'Change defaults', (yargs) => {}, function (argv) {
 
-   inquirer.prompt([
+   inquirer1.prompt([
     {
       name: 'defaultBranch',
       message: 'Set default branch name : ',
@@ -37,14 +38,14 @@ require('yargs')
     db.set('branch',answers.defaultBranch);
     db.set('message',answers.defaultMessage);
     process.exit();
+
   });
     
   })
   .usage('$0 <cmd>')
   .command('run', 'Run gitmeup (add ., commit, pull, push)', (yargs) => {}, function (argv) {
 
-   inquirer
-  .prompt([
+   inquirer2.prompt([
     {
       name: 'branchname',
       message: 'Enter branch name : ',
