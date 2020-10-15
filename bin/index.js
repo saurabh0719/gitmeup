@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const inquirer = require('inquirer');
 const logSymbols = require('log-symbols');
 const JSONdb = require('simple-json-db');
-const db = new JSONdb('../settings.json');
+const db = new JSONdb('./settings.json');
 const git = simpleGit();
 
 let branch_name;
@@ -40,11 +40,10 @@ require('yargs')
   });
     
   })
-  .help()
-  .argv
+  .usage('$0 <cmd>')
+  .command('run', 'Run gitmeup (add ., commit, pull, push)', (yargs) => {}, function (argv) {
 
-
-inquirer
+   inquirer
   .prompt([
     {
       name: 'branchname',
@@ -100,3 +99,10 @@ inquirer
 
 
   });
+    
+  })
+  .help()
+  .argv
+
+
+
