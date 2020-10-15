@@ -84,18 +84,24 @@ require('yargs')
             .then(
                (success) => {
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
-                  if(commit_log){ console.log(success); }
-                  console.log("");
+                  if(commit_log){ 
+                     console.log(success);
+                     console.log(""); 
+                  }
                   git.pull('origin',branch_name)
                      .then((success) => {
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
-                        if(commit_log){ console.log(success); }
-                        console.log("");
+                        if(commit_log){ 
+                           console.log(success);
+                           console.log(""); 
+                        }
                         git.push('origin',branch_name)
                            .then((success) => {
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
-                              if(commit_log){ console.log(success); }
-                              console.log("");
+                              if(commit_log){ 
+                                 console.log(success);
+                                 console.log(""); 
+                              }
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan('saurabh0719'))
                               process.exit();
                            },(failed)=> {
