@@ -4,22 +4,57 @@ const simpleGit = require('simple-git/promise');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const logSymbols = require('log-symbols');
-
+const JSONdb = require('simple-json-db');
+const db = new JSONdb('../settings.json');
 const git = simpleGit();
-var branch_name;
-var commit_message;
+
+let branch_name;
+let commit_message;
+
+let def_branch = db.get('branch');
+let def_message = db.get('message');
+
+
+require('yargs')
+  .scriptName("pirate-parser")
+  .usage('$0 <cmd>')
+  .command('-d', 'Change defaults', (yargs) => {}, function (argv) {
+
+   inquirer.prompt([
+    {
+      name: 'defaultBranch',
+      message: 'Set default branch name : ',
+      default: def_branch,
+    },
+    {
+      name: 'defaultMessage',
+      message: 'Set default commit message : ',
+      default: def_message,
+    },
+  ])
+  .then(answers => {
+    //console.log('Answers:', answers);
+    db.set('branch',answers.defaultBranch);
+    db.set('message',answers.defaultMessage);
+    process.exit();
+  });
+    
+  })
+  .help()
+  .argv
+
 
 inquirer
   .prompt([
     {
       name: 'branchname',
       message: 'Enter branch name : ',
-      default: 'main',
+      default: def_branch,
     },
     {
       name: 'commitMessage',
       message: 'Enter commit message : ',
-      default: 'update done with gitmeup',
+      default: def_message,
     },
   ])
   .then(answers => {
