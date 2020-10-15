@@ -14,6 +14,7 @@ let commit_message;
 
 let def_branch = db.get('branch');
 let def_message = db.get('message');
+let commit_log = db.get('log');
 
 
 require('yargs')
@@ -32,11 +33,20 @@ require('yargs')
       message: 'Set default commit message : ',
       default: def_message,
     },
+    {
+      type: 'list',
+      name: 'logSettings',
+      message: 'Do you want command logs/details? ',
+      choices: ['Yes', 'No'],
+    }
   ])
   .then(answers => {
     //console.log('Answers:', answers);
     db.set('branch',answers.defaultBranch);
     db.set('message',answers.defaultMessage);
+    if(answers.logSettings == 'Yes')
+      db.set('log',1);
+    else db.set('log',0);
     process.exit();
 
   });
@@ -74,17 +84,17 @@ require('yargs')
             .then(
                (success) => {
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
-                  console.log(success);
+                  if(commit_log){ console.log(success); }
                   console.log("");
                   git.pull('origin',branch_name)
                      .then((success) => {
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
-                        console.log(success);
+                        if(commit_log){ console.log(success); }
                         console.log("");
                         git.push('origin',branch_name)
                            .then((success) => {
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
-                              console.log(success);
+                              if(commit_log){ console.log(success); }
                               console.log("");
                               console.log(chalk.red('gitmeup ') + chalk.white.bold('\u20AA ') + chalk.cyan('saurabh0719'))
                               process.exit();
