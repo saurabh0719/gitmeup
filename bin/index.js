@@ -73,7 +73,7 @@ require('yargs')
             .then(
                (success) => {
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
-                  console.log(success.summary);
+                  console.log(success.summary.changes);
                   git.pull('origin',branch_name)
                      .then((success) => {
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
