@@ -1,4 +1,4 @@
-# gitmeup @1.0.1
+# gitmeup
 
 cli tool to automate git commands. 
 
@@ -6,12 +6,21 @@ cli tool to automate git commands.
 <img src="demo.PNG"/>
   </p>
 
-### Installation steps
+### Installation :
 Using npm 
 ```sh
 $ npm install gitmeup -g
 ```
+To update the package 
+```sh
+$ npm update gitmeup -g
+```
+### Usage guide : 
 Run it inside any git repository:
 ```sh
-$ gitmeup
+$ gitmeup run
+```
+Change the default settings:
+```sh
+$ gitmeup defaults
 ```
