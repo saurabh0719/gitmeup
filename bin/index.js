@@ -69,15 +69,18 @@ require('yargs')
        (success) => {
           console.log("");
           console.log(logSymbols.success, chalk.yellowBright('All files added successfully'))
+          console.log("")
           git.commit(commit_message)
             .then(
                (success) => {
                   console.log(logSymbols.success, chalk.magenta('Commit successful : ') + chalk.green(commit_message))
-                  console.log(success.summary.changes);
+                  console.log(success);
+                  console.log("");
                   git.pull('origin',branch_name)
                      .then((success) => {
                         console.log(logSymbols.success, chalk.cyan('Pull successful'));
                         console.log(success);
+                        console.log("");
                         git.push('origin',branch_name)
                            .then((success) => {
                               console.log(logSymbols.success, chalk.blue('Changes pushed successfully\n'));
