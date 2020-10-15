@@ -2,10 +2,6 @@
 
 cli tool to automate git commands. 
 
-<p align="center">
-<img src="demo.PNG"/>
-  </p>
-
 ### Installation :
 Using npm 
 ```sh
