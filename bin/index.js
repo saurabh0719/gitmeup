@@ -108,15 +108,19 @@ require('yargs')
                               process.exit();
                            },(failed)=> {
                               console.log(chalk.red('Push failed'));
+                              console.log(failed);
                            });
                      },(failed)=> {
                         console.log(chalk.red('Pull failed'));
+                        console.log(failed);
                   });
                }, (failed) => {
                   console.log(chalk.red('Commit failed'));
+                  console.log(failed);
          });
        }, (failedAdd) => {
           console.log(chalk.red('Adding files failed'));
+          console.log(failedAdd);
     });
 
 
