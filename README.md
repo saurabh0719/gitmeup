@@ -1,6 +1,6 @@
 # gitmeup
 
-cli tool to automate git commands. 
+cli tool to automate git commands (add ., commit, pull push). 
 
 ### Installation :
 Using npm 
